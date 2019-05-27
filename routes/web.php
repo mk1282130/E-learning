@@ -11,10 +11,16 @@
 |
 */
 
-Route::get('/blade', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return view('auth.login');
+});
+
+Route::get('/category', function () {
+    return view('category');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/users', 'UserController@users');
+// Route::get('/users', 'UserController@users');
