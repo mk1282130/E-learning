@@ -1,17 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
+@section('css')
+<!-- Styles -->
+<link href="{{ asset('css/home.css') }}" rel="stylesheet">
+@endsection
 
-<style>
-hr {
- height: 5px;
- background-color: gray;
- width: 60%;
- border: none;
-}
-</style>
-<body>
-    
+@section('content') 
     <div class="row">
         <div class="col-md-2" style="background-color: antiquewhite">.col-md-4</div>
             <div class="col-md-8" style="background-color:aquamarine">
@@ -43,8 +37,5 @@ hr {
             </div>
         <div class="col-md-2" style="background-color:cadetblue">.col-md-4</div>
     </div>
-
-</body>
-</html>
 
 @endsection

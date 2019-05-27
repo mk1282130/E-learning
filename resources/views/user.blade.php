@@ -1,14 +1,10 @@
+@section('css')
+<!-- Styles -->
+<link href="{{ asset('css/user.css') }}" rel="stylesheet">
+@endsection
 
 @section('content')
-<style>
-hr {
- height: 5px;
- background-color: gray;
- width: 60%;
- border: none;
-}
-</style>
-<body>
+
     <div class="row">
         <div class="col-sm-1" style="background-color:cadetblue">.col-sm-4</div>
         <div class="col-sm-3 text-center" style="background-color:lightgray ">.profile
@@ -45,7 +41,5 @@ hr {
             </div>
         <div class="col-sm-1" style="background-color: antiquewhite">.col-sm-4</div>
     </div>
-
-</body>
 
 @endsection
