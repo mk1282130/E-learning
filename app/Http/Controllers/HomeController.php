@@ -26,14 +26,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        // $auth_id = Auth::user()->id;
-        // $users = User::where('is_admin', 1)->where('id', '!=', $auth_id)->get();
-        // if(auth()->user()->is_admin==1){
-        // // is_admin==1だとAdminユーザとして認識
-        // // dd($users);
-        //     return view('admin.home', compact('users'));
-        // }else{
-            return redirect('/users');
-        // }
+        $auth_id = Auth::user()->id;
+        $users = User::where('is_admin', 1)->where('id', '!=', $auth_id)->get();
+        if(auth()->user()->is_admin==1){
+        // is_admin==1だとAdminユーザとして認識
+        // dd($users);
+            return view('admin.home', compact('users'));
+        }else{
+            return redirect('users');
+        }
     }
 }   

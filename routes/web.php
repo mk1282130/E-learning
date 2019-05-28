@@ -19,8 +19,13 @@ Route::get('/category', function () {
     return view('category');
 });
 
+// Route::get('/user', function () {
+//     return view('user');
+// });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', 'UserController@users');
+Route::get('/user/{id}/profile', 'UserController@show')->name('profile');
 // Route::get('/users', 'UserController@users');
