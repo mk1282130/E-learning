@@ -15,14 +15,6 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/category', function () {
-    return view('category');
-});
-
-// Route::get('/user', function () {
-//     return view('user');
-// });
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

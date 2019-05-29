@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-sm-1" style="background-color:cadetblue">.col-sm-4</div>
     <div class="col-sm-3 text-center" style="background-color:lightgray ">.profile
-        <div class="card mt-0" style="width: 20rem;">
+        <div class="card m-0" style="width: 20rem;">
             <div class="card-body">
                 <img src="/images/telegram.png" alt="icon" style="width:100px; height:100px;">
                 <h1>{{ $user->name }}</h1>
