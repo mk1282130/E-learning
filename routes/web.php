@@ -20,4 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', 'UserController@users');
 Route::get('/user/{id}/profile', 'UserController@show')->name('profile');
-// Route::get('/users', 'UserController@users');
+Route::get('/user/{id}/editProfile', 'UserController@editProfile');
