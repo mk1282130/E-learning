@@ -15,12 +15,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/category', function () {
-    return view('category');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', 'UserController@users');
-// Route::get('/users', 'UserController@users');
+Route::get('/user/{id}/profile', 'UserController@show')->name('profile');
+Route::get('/user/{id}/editProfile', 'UserController@editProfile');

@@ -15,7 +15,7 @@
                         <img src="/images/telegram.png" alt="icon" style="width:80px; height:80px;">
                     </div>
                     <div class="col-sm-10">
-                        <p class="float-right"><a href="#" class="btn btn-primary">Go somewhere</a></p>
+                        <p class="float-right"><a href="/user/{{ $user->id }}/profile" class="btn btn-primary">Profile</a></p>
                         <h3 class="card-title">{{ $user->name }}</h3>
                     </div>
                     <div class="col-sm-0"></div>
