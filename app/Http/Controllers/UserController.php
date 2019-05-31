@@ -28,4 +28,19 @@ class UserController extends Controller
             return view('users', compact('users'));
         }
     }
+
+    public function editProfile($id)
+    {
+        $user = User::find($id);
+        return view('editProfile', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->save();
+
+        return redirect()->route('profile', compact('id'));
+    }
 }
