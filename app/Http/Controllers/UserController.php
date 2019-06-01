@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddAdminRequest;
 use Illuminate\Support\Facades\Hash;
@@ -68,5 +69,22 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         return back();
+    }
+
+    public function addAdmin()
+    {
+        return view('admin.addAdmin');
+    }
+
+    public function saveAdmin(Request $request)
+    {
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user['is_admin'] = '1';
+        $user->save();
+        return redirect('/users');
+        // return view('admin.home');
     }
 }
