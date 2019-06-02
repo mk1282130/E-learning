@@ -33,7 +33,7 @@
                         <div class="col-md-3"></div>
                             <div class="col-md-6">
                                     <p class="float-right">
-                                        <a href="http://">edit</a> | <a href="http://"><label>delete</label></a>
+                                        <a href="http://">edit</a> | <a href="user/{{ $user->id }}/delete"><label>delete</label></a>
                                     </p>
                                     <h4>{{ $user->first_name }} {{ $user->last_name }}</h4>
                                 <hr>
