@@ -24,3 +24,8 @@ Route::get('/user/{id}/editProfile', 'UserController@editProfile');
 Route::post('/user/{id}/update', 'UserController@update');
 Route::get('/admin/addAdmin', 'UserController@addAdmin');
 Route::post('/admin/addAdmin/save', 'UserController@saveAdmin')->name('saveAdmin');
+Route::get('/admin/category', 'UserController@category');
+Route::get('/admin/addCategory', 'UserController@addCategory');
+Route::get('/admin/addCategory/save', 'LessonController@categorySave');
+Route::get('/user/{id}/follow', 'UserController@follow');
+Route::get('/user/{id}/unfollow', 'UserController@unfollow');

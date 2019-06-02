@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         $auth_id = Auth::user()->id;
         // 自分のユーザID
-        $users = User::where('is_admin', 1)->where('id', '!=', $auth_id)->get();
+        $users = User::where('is_admin', 0)->where('id', '!=', $auth_id)->get();
         // ↑リストアップされるユーザが自分のIDを除いたものにする
         if(auth()->user()->is_admin==1){
         // is_admin==1だとAdminユーザとして認識
@@ -53,7 +53,9 @@ class UserController extends Controller
     public function saveAdmin(Request $request)
     {
         $user = new User();
-        $user->name = $request->input('name');
+        // $user->name = $request->input('name');
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user['is_admin'] = '1';
@@ -61,4 +63,24 @@ class UserController extends Controller
         return redirect('/users');
         // return view('admin.home');
     }
+
+    public function category()
+    {
+        return view('admin.category');
+    }
+
+    public function follow($id)
+    {
+        $user = User::find($id);
+        Auth::user()->following()->save($user);
+        return back();
+    }
+
+    public function unfollow($id)
+    {
+        auth()->user()->following()->detach($id);
+        // detach: 中間テーブルからデータを削除
+        return back();
+    }
+
 }
