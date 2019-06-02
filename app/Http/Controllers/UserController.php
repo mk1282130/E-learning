@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $auth_id = Auth::user()->id;
         // 自分のユーザID
-        $users = User::where('is_admin', 1)->where('id', '!=', $auth_id)->get();
+        $users = User::where('is_admin', 0)->where('id', '!=', $auth_id)->get();
         // ↑リストアップされるユーザが自分のIDを除いたものにする
         if(auth()->user()->is_admin==1){
         // is_admin==1だとAdminユーザとして認識
