@@ -15,23 +15,23 @@
                     Only admin can add and delete another admin users.
                     </p>
                     <div class="row">
-                        <div class="col-md-2"></div>
-                            <div class="col-md-8">
+                        <div class="col-md-3"></div>
+                            <div class="col-md-6">
                                 <hr>
                             </div>
-                        <div class="col-md-2"></div>
+                        <div class="col-md-3"></div>
                     </div>
                     @foreach($users as $user)
                     <div class="row">
-                        <div class="col-md-2"></div>
-                            <div class="col-md-8">
+                        <div class="col-md-3"></div>
+                            <div class="col-md-6">
                                     <p class="float-right">
                                         <a href="http://">edit</a> | <a href="http://"><label>delete</label></a>
                                     </p>
                                     <h4>{{ $user->name }}</h4>
                                 <hr>
                             </div>
-                        <div class="col-md-2"></div>
+                        <div class="col-md-3"></div>
                     </div>
                     @endforeach
             </div>

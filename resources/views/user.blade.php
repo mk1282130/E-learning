@@ -14,7 +14,9 @@
             <div class="card-body">
                 <img src="/images/telegram.png" alt="icon" style="width:100px; height:100px;">
                 <h1>{{ $user->name }}</h1>
-                    <button type="button" class="btn btn-outline-secondary">Edit Profile</button>
+                    @if(Auth::user()->id == $user->id)
+                    <button type="button" class="btn btn-outline-secondary"><a href="/user/{{ $user->id }}/editProfile">Edit Profile</a></button>
+                    @endif
                     <hr>
                     <p>follow followed</p>
                     <button type="button" class="btn btn-outline-secondary">Follow</button>
