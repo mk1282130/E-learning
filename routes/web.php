@@ -22,3 +22,5 @@ Route::get('/users', 'UserController@users');
 Route::get('/user/{id}/profile', 'UserController@show')->name('profile');
 Route::get('/user/{id}/editProfile', 'UserController@editProfile');
 Route::post('/user/{id}/update', 'UserController@update');
+Route::get('/admin/addAdmin', 'UserController@addAdmin');
+Route::post('/admin/addAdmin/save', 'UserController@saveAdmin')->name('saveAdmin');

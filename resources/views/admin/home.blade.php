@@ -14,6 +14,13 @@
                     Admin can make, edit, and delete lessons. <br>
                     Only admin can add and delete another admin users.
                     </p>
+                    <div class ="text-center">
+                        <button type="button" class="btn btn-outline-primary">
+                            <a href="admin/addAdmin">    
+                                New Admin
+                            </a>
+                        </button>
+                    </div>
                     <div class="row">
                         <div class="col-md-3"></div>
                             <div class="col-md-6">
