@@ -27,3 +27,6 @@ Route::post('/admin/addAdmin/save', 'UserController@saveAdmin')->name('saveAdmin
 Route::get('/user/{id}/follow', 'UserController@follow');
 Route::get('/user/{id}/unfollow', 'UserController@unfollow');
 Route::get('/user/{id}/delete', 'UserController@deleteUser');
+Route::get('/admin/category', 'CategoryController@category');
+Route::get('/category/addNewCategory', 'CategoryController@addNewCategory');
+Route::post('/category/addNewCategory/save', 'CategoryController@save');

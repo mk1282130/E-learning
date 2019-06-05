@@ -55,14 +55,17 @@
                                 <a class="nav-link" href="/admin/category">
                                     category
                                 </a>
+                            </li>
                             <li>
                                 <a class="nav-link">
                                     |
                                 </a>
+                            </li>
                             <li>
                                 <a class="nav-link" href="/users">
                                     users
                                 </a>
+                            </li>
                             <li>
                                 <a class="nav-link">
                                     |

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Admin;
+// use App\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $auth_id = Auth::user()->id;
         // 自分のユーザID
-        $users = User::where('is_admin', 0)->where('id', '!=', $auth_id)->get();
+        $users = User::where('is_admin', 1)->where('id', '!=', $auth_id)->get();
         // ↑リストアップされるユーザが自分のIDを除いたものにする
         if(auth()->user()->is_admin==1){
         // is_admin==1だとAdminユーザとして認識
@@ -61,15 +61,17 @@ class UserController extends Controller
         $user['is_admin'] = '1';
         $user->save();
         return redirect('/users');
-
-        // return User::create([
-        //     'first_name' => $data['first_name'] = $request->input('first_name'),
-        //     'last_name' => $data['last_name'] = $request->input('last_name'),
-        //     'email' => $data['email'] = $request->input('email'),
-        //     'password' => Hash::make($data['password']) = $request->input('password'),
-        //     $date['is_admin']='1',
-        // ]);
     }
+
+    // protected function saveAdminValidator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'first_name' => ['required', 'string', 'max:255'],
+    //         'last_name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'password' => ['required', 'string', 'min:6', 'confirmed'],
+    //     ]);
+    // }
 
     public function category()
     {
