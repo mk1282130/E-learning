@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Admin;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\AddAdminRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -23,7 +24,6 @@ class UserController extends Controller
         // ↑リストアップされるユーザが自分のIDを除いたものにする
         if(auth()->user()->is_admin==1){
         // is_admin==1だとAdminユーザとして認識
-        // dd($users);
             return view('admin.home', compact('users'));
         }else{
             return view('users', compact('users'));
@@ -50,14 +50,16 @@ class UserController extends Controller
         return view('admin.addAdmin');
     }
 
-    public function saveAdmin(Request $request)
+    public function saveAdmin(AddAdminRequest $request)
     {
         $user = new User();
-        $user->name = $request->input('name');
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = Hash::make($request->input('password'));
         $user['is_admin'] = '1';
         $user->save();
+        
         return redirect('/users');
     }
 }
