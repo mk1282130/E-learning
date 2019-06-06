@@ -30,3 +30,5 @@ Route::get('/user/{id}/delete', 'UserController@deleteUser');
 Route::get('/admin/category', 'CategoryController@category');
 Route::get('/category/addNewCategory', 'CategoryController@addNewCategory');
 Route::post('/category/addNewCategory/save', 'CategoryController@save');
+Route::get('/category/{id}/edit', 'CategoryController@edit');
+Route::post('/category/{id}/update', 'CategoryController@update');

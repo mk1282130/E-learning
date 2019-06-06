@@ -26,6 +26,20 @@ class CategoryController extends Controller
         $category->description=$request->input('description');
         Auth::user()->category()->save($category);
         return redirect('admin/category');
+    }
 
+    public function edit($category)
+    {
+        $category = Category::find($category);
+        return view('admin.editCategory', compact('category'));
+    }
+
+    public function update(Request $request, $category)
+    {
+        $category = Category::find($category);
+        $category->title = $request->input('title');
+        $category->description = $request->input('description');
+        $category->save();
+        return redirect('/admin/category');
     }
 }

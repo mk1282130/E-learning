@@ -12,11 +12,15 @@
                             New Category
                         </a>
                     </button>
-                    @foreach ($categories as $category)
-                    <h3>{{ $category->title }}</h3>
-                    <h4>{{ $category->description }}</h4>
-                    <br>
-                    @endforeach
+                        <h1>------------------------------</h1>
+                            @foreach ($categories as $category)
+                                <h3>{{ $category->title }}</h3>
+                                <h4>{{ $category->description }}</h4>
+                                <a href="/category/{{ $category->id }}/edit">Edit</a>
+                                <h5>Delete</h5>
+                                <h1>------------------------------</h1>
+                                <br>
+                            @endforeach
                 </div>
         </div>
     <div class="col-sm-2" style="background-color:cadetblue">.col-sm-4</div>
