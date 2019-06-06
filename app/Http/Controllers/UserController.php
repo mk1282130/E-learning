@@ -59,7 +59,32 @@ class UserController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user['is_admin'] = '1';
         $user->save();
-        
         return redirect('/users');
+    }
+
+    public function category()
+    {
+        return view('admin.category');
+    }
+
+    public function follow($id)
+    {
+        $user = User::find($id);
+        Auth::user()->following()->save($user);
+        return back();
+    }
+
+    public function unfollow($id)
+    {
+        auth()->user()->following()->detach($id);
+        // detach: 中間テーブルからデータを削除
+        return back();
+    }
+
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return back();
     }
 }
