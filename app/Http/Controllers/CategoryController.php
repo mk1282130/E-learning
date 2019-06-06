@@ -42,4 +42,11 @@ class CategoryController extends Controller
         $category->save();
         return redirect('/admin/category');
     }
+
+    public function delete($category)
+    {
+        $category = Category::find($category);
+        $category->delete();
+        return back();
+    }
 }

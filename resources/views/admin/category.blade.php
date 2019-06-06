@@ -16,8 +16,8 @@
                             @foreach ($categories as $category)
                                 <h3>{{ $category->title }}</h3>
                                 <h4>{{ $category->description }}</h4>
-                                <a href="/category/{{ $category->id }}/edit">Edit</a>
-                                <h5>Delete</h5>
+                                <a href="/category/{{ $category->id }}/edit">Edit</a> |
+                                <a href="/category/{{ $category->id }}/delete">Delete</a>
                                 <h1>------------------------------</h1>
                                 <br>
                             @endforeach
