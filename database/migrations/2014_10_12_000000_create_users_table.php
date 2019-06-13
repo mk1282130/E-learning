@@ -15,15 +15,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
-            // unique：重複しないように
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('avatar')->default('default.jpg');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('is_admin')->default(false);
-            // カラムにNULL値を許す=>falseでNULL値を許さない
         });
     }
 
