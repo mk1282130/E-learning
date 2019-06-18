@@ -1,21 +1,27 @@
 @extends('layouts.app')
 
+@section('css')
+<!-- Styles -->
+<link href="{{ asset('css/editCategory.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-
-<div class="row">
-    <div class="col-sm-2" style="background-color: antiquewhite">.col-sm-4</div>
-    <div class="col-sm-8 text-center" style="background-color:aquamarine">
-        <form action="/category/{{ $category->id }}/update" method="POST">
-        @csrf
-            <h2>Title</h2>
-                <input type="text" name="title" value="{{ $category->title }}">
-            <h2>Description</h2>
-                <input type="text" name="description" value="{{ $category->description }}">
-            <br><br>
-            <input type="submit" value="Send">
-        </form>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <form action="/category/{{ $category->id }}/update" method="POST">
+            @csrf
+            <h1 style="margin-bottom: 15px;">Edit Category</h1>
+                <h2>Title</h2>
+                    <input class="form-control" type="text" name="title" value="{{ $category->title }}">
+                <h2 style="margin-top: 10px;">Description</h2>
+                    <input class="form-control" type="text" name="description" value="{{ $category->description }}">
+                <br>
+                <input class="button" type="submit" value="Update">
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
     </div>
-    <div class="col-sm-2" style="background-color:cadetblue">.col-sm-4</div>
 </div>
-
 @endsection

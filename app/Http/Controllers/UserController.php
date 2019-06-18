@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddAdminRequest;
 use Illuminate\Support\Facades\Hash;
+use Image;
+use Intervention\Image\ImageManager;
 
 class UserController extends Controller
 {
@@ -19,15 +21,14 @@ class UserController extends Controller
     public function users()
     {
         $auth_id = Auth::user()->id;
-        // 自分のユーザID
-        $users = User::where('is_admin', 1)->where('id', '!=', $auth_id)->get();
+        $users = User::where('is_admin', 0)->where('id', '!=', $auth_id)->get();
         // ↑リストアップされるユーザが自分のIDを除いたものにする
-        if(auth()->user()->is_admin==1){
+        // if(auth()->user()->is_admin==1){
         // is_admin==1だとAdminユーザとして認識
-            return view('admin.home', compact('users'));
-        }else{
+            // return view('admin.home', compact('users'));
+        // }else{
             return view('users', compact('users'));
-        }
+        // }
     }
 
     public function editProfile($id)
@@ -39,9 +40,14 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $user->name = $request->input('name');
+        // dd($request->all());
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+    
         $user->save();
+        // dd($id);
 
+        // return redirect()->route('profile', compact('id'));
         return redirect()->route('profile', compact('id'));
     }
 
@@ -59,7 +65,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user['is_admin'] = '1';
         $user->save();
-        return redirect('/users');
+        return redirect()->route('home');
     }
 
     public function category()
@@ -86,5 +92,36 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         return back();
+    }
+
+    public function profileImage($user)
+    {
+        $user = User::find($user);
+        return view('ProfileImageUpload', compact('user'));
+    }
+
+    public function update_avatar(Request $request) {
+        $avatar = $request->avatar;
+        $filename = time().'.'.$avatar->getClientOriginalExtension();
+        request()->avatar->move(public_path('/uploads/avatars/'), $filename );
+        $user = Auth::user();
+        $user->avatar = $filename;
+        $user->save();
+
+        return view('user', compact('user'));
+    }
+
+    public function followings($id)
+    {
+        $user = User::find($id);
+        $followings = $user->following()->get();
+        return view('following', compact('followings', 'user'));
+    }
+
+    public function followers($id)
+    {
+        $user = User::find($id);
+        $followers = $user->follower()->get();
+        return view('follow', compact('followers', 'user'));
     }
 }

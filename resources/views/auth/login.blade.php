@@ -39,6 +39,16 @@
                             </div>
                         </div>
 
+                        <!-- ↓SNS -->
+                        <div class="form-group row">
+                          <label for="name" class="col-sm-4 col-form-label text-md-right">Login With</label>
+                           <div class="col-md-6">
+                               <a href="{{ url('login/facebook')}}" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+                               <!-- <a href="{{ url('login/twitter')}}" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a> -->
+                           </div>
+                        </div>
+                        <!-- ↑SNS -->
+
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

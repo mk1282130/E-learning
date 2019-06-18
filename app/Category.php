@@ -14,4 +14,9 @@ class Category extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function words()
+    {
+        return $this->hasMany('App\Word');
+    }
 }

@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // 個別に自分で追加したもの
+        // This is for upload profile image
+        Intervention\Image\ImageServiceProvider::class,
+
     ],
 
     /*
@@ -223,6 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Image' => Illuminate\Support\Facades\Image::class,
 
     ],
 

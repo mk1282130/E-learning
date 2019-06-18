@@ -20,7 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             // unique：重複しないように
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('avatar')->default('default.jpg');
+            // $table->string('image_url');
+            $table->string('password')->nullable();
+            // SNSログイン用にnullableでnullをOKにする
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('is_admin')->default(false);
