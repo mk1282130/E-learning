@@ -27,3 +27,4 @@ Route::post('/user/{id}/update', 'UserController@update');
 Route::get('/admin/addAdmin', 'UserController@addAdmin');
 Route::post('/admin/addAdmin/save', 'UserController@saveAdmin')->name('saveAdmin');
 Route::get('/user/{id}/delete', 'UserController@deleteUser');
+Route::get('/user/{id}/follow', 'UserController@follow');
