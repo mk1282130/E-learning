@@ -79,7 +79,6 @@ class UserController extends Controller
     public function saveAdmin(Request $request)
     {
         $user = new User();
-        // $user->name = $request->input('name');
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
@@ -87,7 +86,14 @@ class UserController extends Controller
         $user['is_admin'] = '1';
         $user->save();
         return redirect('/users');
-        // return view('admin.home');
+
+        // return User::create([
+        //     'first_name' => $data['first_name'] = $request->input('first_name'),
+        //     'last_name' => $data['last_name'] = $request->input('last_name'),
+        //     'email' => $data['email'] = $request->input('email'),
+        //     'password' => Hash::make($data['password']) = $request->input('password'),
+        //     $date['is_admin']='1',
+        // ]);
     }
 
     public function category()
@@ -109,4 +115,10 @@ class UserController extends Controller
         return back();
     }
 
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return back();
+    }
 }
