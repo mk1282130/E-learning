@@ -20,6 +20,10 @@
                             <input class="form-control" type="text" name="first_name" value="{{ $user->first_name }}">
                         <h2 style="margin-top: 10px;">Last Name</h2>
                             <input class="form-control" type="text" name="last_name" value="{{ $user->last_name }}">
+                        <h2 style="margin-top: 10px;">E-mail Address</h2>
+                            <input class="form-control" type="text" name="email" value="{{ $user->email }}">
+                        <h2 style="margin-top: 10px;">Password</h2>
+                            <input class="form-control" type="text" name="password">
                     </div>
                     <br>
                     <input class="button" type="submit" value="Update">

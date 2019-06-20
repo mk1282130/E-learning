@@ -9,6 +9,7 @@ use App\User;
 use App\Category;
 use App\Option;
 use App\Answer;
+use App\Lesson;
 
 class WordController extends Controller
 {
@@ -50,11 +51,13 @@ class WordController extends Controller
     }
 
     public function showWords($id)
-    {
+    {   
         $category = Category::find($id);
         $words = Word::where('category_id', $id)->get();
+        // dd($id);
+        // $image = Word::find($id);
         
-        return view('admin.wordShow', compact('words', 'category'));
+        return view('admin.wordShow', compact('word', 'words', 'category'));
     }
 
     public function lesson()

@@ -44,76 +44,76 @@
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             @guest
-                                <li class="nav-item" >
-                                    <strong><a class="nav-link" style="color:#ff33a0;font-size:20px;" href="{{ route('login') }}">{{ __('Login') }}</a></strong>
-                                </li>
-                                @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <strong><a class="nav-link" style="color:#ff33a0;font-size:20px;" href="{{ route('register') }}">{{ __('Register') }}</a></strong>
-                                </li>
-                                @endif
-                            @else
-
-                            @if(auth()->user()->is_admin=1)
-
-                            <li>
-                                <a class="nav-link" href="/home" style="color:#ff33a0;font-size:20px;">
-                                    <strong> Dashboard </strong>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link" style="color:#ffffff;font-size:20px;">
-                                    |
-                                </a>
-                            </li>
-
-                            @endif
-                                <li>
-                                    <a class="nav-link" href="/admin/category" style="color:#ff33a0;font-size:20px;">
-                                        <strong> category </strong>
-                                    </a>
-                                </li>
-
-                                @if(auth()->user()->is_admin==0)
-                                <li>
-                                    <a class="nav-link" style="color:#ffffff;font-size:20px;">
-                                        |
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="/users" style="color:#ff33a0;font-size:20px;">
-                                        users
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" style="color:#ffffff;font-size:20px;">
-                                        |
-                                    </a>
-                                </li>
-                                @endif
-
-                                <div class="imageAndUsername">
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" style="position:relative; padding-left:50px; color:#00ffaa; font-size:20px;display: flex;align-items: center;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            <img src="/images/avatars/{{ Auth::user()->avatar }}" style="width=32px; height:32px; position:absolute; top:10px; left:10px; border-radius:50%;font-size:25px;display: flex;align-items: center;">
-                                            <strong>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</strong><span class="caret"></span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::user()->id] ) }}" style="font-size:20px;">
-                                                profile
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('logout') }}" style="font-size:20px;"
-                                            onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </div>
+                                    <li class="nav-item" >
+                                        <strong><a class="nav-link" style="color:#ff33a0;font-size:20px;" href="{{ route('login') }}">{{ __('Login') }}</a></strong>
                                     </li>
-                                </div>
+                                    @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <strong><a class="nav-link" style="color:#ff33a0;font-size:20px;" href="{{ route('register') }}">{{ __('Register') }}</a></strong>
+                                    </li>
+                                    @endif
+                                @else
+
+                                    @if(auth()->user()->is_admin=1)
+
+                                    <li>
+                                        <a class="nav-link" href="/home" style="color:#ff33a0;font-size:20px;">
+                                            <strong> Dashboard </strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" style="color:#ffffff;font-size:20px;">
+                                            |
+                                        </a>
+                                    </li>
+
+                                    @endif
+                                        <li>
+                                            <a class="nav-link" href="/admin/category" style="color:#ff33a0;font-size:20px;">
+                                                <strong> category </strong>
+                                            </a>
+                                        </li>
+
+                                    @if(auth()->user()->is_admin==1)
+                                    <li>
+                                        <a class="nav-link" style="color:#ffffff;font-size:20px;">
+                                            |
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="/users" style="color:#ff33a0;font-size:20px;">
+                                            <strong>users</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" style="color:#ffffff;font-size:20px;">
+                                            |
+                                        </a>
+                                    </li>
+                                    @endif
+
+                                    <div class="imageAndUsername">
+                                        <li class="nav-item dropdown">
+                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" style="position:relative; padding-left:50px; color:#00ffaa; font-size:20px;display: flex;align-items: center;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width=32px; height:32px; position:absolute; top:10px; left:10px; border-radius:50%;font-size:25px;display: flex;align-items: center;">
+                                                <strong>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</strong><span class="caret"></span>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::user()->id] ) }}" style="font-size:20px;">
+                                                    profile
+                                                </a>
+                                                <a class="dropdown-item" href="{{ route('logout') }}" style="font-size:20px;"
+                                                onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </div>
                             @endguest
                         </ul>
                     </div>

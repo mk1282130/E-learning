@@ -27,10 +27,14 @@ Route::post('/user/{id}/update', 'UserController@update');
 Route::get('/admin/addAdmin', 'UserController@addAdmin');
 Route::post('/admin/addAdmin/save', 'UserController@saveAdmin')->name('saveAdmin');
 Route::get('/user/{id}/delete', 'UserController@deleteUser');
+Route::get('/user/{id}/profileImage', 'UserController@profileImage');
+Route::post('/user/{id}/update_avatar', 'UserController@update_avatar')->name('update_avatar');
 
 // Follow
 Route::get('/user/{id}/follow', 'UserController@follow');
 Route::get('/user/{id}/unfollow', 'UserController@unfollow');
+Route::get('/user/{id}/following', 'UserController@followings');
+Route::get('/user/{id}/followers', 'UserController@followers');
 
 // Category
 Route::get('/admin/category', 'CategoryController@category');
@@ -55,6 +59,8 @@ Route::get('/category/category_id={category_id}&index={index}/lesson/show', 'Les
 Route::get('/category/{id}/result', 'LessonController@result')->name('result');
 Route::get('/category/lesson_id={lesson_id}&option={option_id}&index={index}/store', 'LessonController@lesson_store')->name('lesson_store');
 Route::get('/category/{id}/saveAnswer', 'WordController@saveAnswer');
+Route::post('/word/{word_id}/wordImage', 'LessonController@wordImage')->name('wordImage');
+Route::get('/user/{id}/lessonLog', 'LessonController@lesson_log');
 
 //*from login button
 Route::get('/login/{social}', 'Auth\LoginController@socialLogin')->where('social', 'facebook|twitter');

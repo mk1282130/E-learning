@@ -9,12 +9,14 @@ use App\Http\Requests\AddAdminRequest;
 use Illuminate\Support\Facades\Hash;
 use Image;
 use Intervention\Image\ImageManager;
+use App\Answer;
 
 class UserController extends Controller
 {
     public function show($id)
     {
         $user = User::find($id);
+        
         return view('user', compact('user'));
     }
 
@@ -22,18 +24,14 @@ class UserController extends Controller
     {
         $auth_id = Auth::user()->id;
         $users = User::where('is_admin', 0)->where('id', '!=', $auth_id)->get();
-        // ↑リストアップされるユーザが自分のIDを除いたものにする
-        // if(auth()->user()->is_admin==1){
-        // is_admin==1だとAdminユーザとして認識
-            // return view('admin.home', compact('users'));
-        // }else{
-            return view('users', compact('users'));
-        // }
+    
+        return view('users', compact('users'));
     }
 
     public function editProfile($id)
     {
         $user = User::find($id);
+
         return view('editProfile', compact('user'));
     }
 
@@ -43,6 +41,8 @@ class UserController extends Controller
         // dd($request->all());
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
     
         $user->save();
         // dd($id);
@@ -100,10 +100,12 @@ class UserController extends Controller
         return view('ProfileImageUpload', compact('user'));
     }
 
-    public function update_avatar(Request $request) {
+    public function update_avatar(Request $request) 
+    {
         $avatar = $request->avatar;
         $filename = time().'.'.$avatar->getClientOriginalExtension();
         request()->avatar->move(public_path('/uploads/avatars/'), $filename );
+
         $user = Auth::user();
         $user->avatar = $filename;
         $user->save();
@@ -125,3 +127,5 @@ class UserController extends Controller
         return view('follow', compact('followers', 'user'));
     }
 }
+
+

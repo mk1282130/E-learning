@@ -21,15 +21,12 @@
                     @endif
                     <hr>
 
-                    <!-- <div class="row">
-                        <div class="col-sm-6" style="background-color: antiquewhite">.col-sm-4</div>
-                        <div class="col-sm-6" style="background-color:aquamarine">.col-sm-4</div>
-                    </div> -->
-
                     <h2>following</h2>
                         <h3><a href="/user/{{ $user->id }}/following">{{ count( $user->following()->get() ) }}</a></h3>
                     <h2>followers</h2>
                         <h3><a href="/user/{{ $user->id }}/followers">{{ count( $user->follower()->get() ) }}</a></h3>
+                    <h2 class=""><strong>Learned</strong></h2>
+                        <h3><a>{{ count( $user->follower()->get() ) }}</a></h3>
 
                     @if(Auth::user()->id == $user->id)
                         @else
@@ -46,6 +43,16 @@
         <div class="card mb-3" style="max-width: 65rem;">
             <div class="card-header">Activity Log</div>
                 <div class="card-body text-success">
+
+                    @if(auth()->user()->following()->find($user->id) !== null)
+                        
+                    @else
+                        @if(auth()->user()->id !== $user->id)
+                            You are not following this user!
+                        @else
+                            * Nothing to show. This is your own page. *
+                        @endif
+                    @endif
                 </div>
         </div>
     </div>

@@ -7,11 +7,15 @@
         <div class="col-sm-8">
             <h1 class="text-center">Category</h1>
                 <div class ="text-center">
-                    <button type="button" class="btn btn-outline-primary" style="margin: 20px;">
-                        <a href="/category/addNewCategory">    
-                            New Category
-                        </a>
-                    </button>
+                    @if((auth()->user()->is_admin==1))
+                        <button type="button" class="btn btn-outline-primary" style="margin: 20px;">
+                            <a href="/category/addNewCategory">    
+                                New Category
+                            </a>
+                        </button>
+                    @else
+                        <br>
+                    @endif
                     <div class="row object-list">
                         @foreach ($categories as $category)
                         <div class="col-sm-4" style="padding-bottom: 20px;;padding-right: 5px;padding-left: 5px;">
