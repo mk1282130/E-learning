@@ -8,10 +8,15 @@
             <h1>Category</h1>
                 <div class ="text-center">
                     <button type="button" class="btn btn-outline-primary">
-                        <a href="addCategory">    
-                            New Admin
+                        <a href="/category/addNewCategory">    
+                            New Category
                         </a>
                     </button>
+                    @foreach ($categories as $category)
+                    <h3>{{ $category->title }}</h3>
+                    <h4>{{ $category->description }}</h4>
+                    <br>
+                    @endforeach
                 </div>
         </div>
     <div class="col-sm-2" style="background-color:cadetblue">.col-sm-4</div>
