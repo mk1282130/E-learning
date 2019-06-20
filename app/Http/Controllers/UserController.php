@@ -76,25 +76,16 @@ class UserController extends Controller
         return view('admin.addAdmin');
     }
 
-    public function saveAdmin(Request $request)
+    public function saveAdmin(AddAdminRequest $request)
     {
         $user = new User();
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = Hash::make($request->input('password'));
         $user['is_admin'] = '1';
         $user->save();
         return redirect('/users');
-
-        // return User::create([
-        //     'first_name' => $data['first_name'] = $request->input('first_name'),
-        //     'last_name' => $data['last_name'] = $request->input('last_name'),
-        //     'email' => $data['email'] = $request->input('email'),
-        //     'password' => Hash::make($data['password']) = $request->input('password'),
-        //     $date['is_admin']='1',
-        // ]);
-    }
 
     public function category()
     {
